@@ -25,7 +25,8 @@
   gap: 8px; /* Space between icon and text */
 }
 
-.doctor-search-form input[type="text"] {
+.doctor-search-form input[type="text"],
+.doctor-search-form input[type="number"] { /* Added number input type */
   padding: 14px 20px; /* Increased padding */
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -35,10 +36,21 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.doctor-search-form input[type="text"]:focus {
+.doctor-search-form input[type="text"]:focus,
+.doctor-search-form input[type="number"]:focus { /* Added number input type */
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Focus ring */
   outline: none;
+}
+
+.doctor-search-form .range-inputs { /* Style for fees and experience range inputs */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.doctor-search-form .range-inputs input {
+    flex-grow: 1;
 }
 
 .doctor-search-form button {
@@ -110,16 +122,22 @@
   margin-right: 2px;
 }
 
-.doctor-card .location {
+.doctor-card .location,
+.doctor-card .experience,
+.doctor-card .fees {
   font-size: 1em; /* Slightly larger location text */
   color: #777;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 8px; /* More space for icon */
+  justify-content: center;
+  text-align: center;
 }
 
-.doctor-card .location i {
+.doctor-card .location i,
+.doctor-card .experience i,
+.doctor-card .fees i {
   color: #999;
   font-size: 1.2em;
 }
