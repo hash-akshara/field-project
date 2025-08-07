@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyHealth Fusion - Your AI Health Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link the new find-doctors.css -->
+  <link rel="stylesheet" href="find-doctors.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <!-- <i class="fa-solid fa-heart-pulse"></i> -->
+      <img src="logo.jpg" alt="logo" width="39px" height="35px">
+      <span>MyHealth <strong>Fusion</strong></span>
+    </div>
+    <nav>
+      <a href="#dashboard" class="nav-item active">Dashboard</a>
+      <a href="#appointments" class="nav-item">Appointments</a>
+      <a href="#reports" class="nav-item">Reports</a>
+      <a href="#profile" class="nav-item">Profile</a>
+      <a href="#" class="nav-item">Log out <i class="fas fa-sign-out-alt"></i></a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#dashboard" class="nav-item active">Dashboard</a>
+    <a href="#appointments" class="nav-item">Appointments</a>
+    <a href="#reports" class="nav-item">Reports</a>
+    <a href="#profile" class="nav-item">Profile</a>
+    <a href="#" class="nav-item">Log out</a>
+  </nav>
+
+  <main>
+    <!-- Dashboard Section -->
+    <section class="hero" id="dashboard">
+      <div class="hero-content">
+        <h1>Your AI Health Assistant</h1>
+        <p class="subtitle">Bridging Healthcare Gaps with Smart AI on the Web</p>
+        <button class="sos-btn pulse-animation"><i class="fas fa-exclamation-triangle"></i> SOS Alert</button>
+      </div>
+      <div class="hero-img">
+        <img src="bot.jpg" alt="AI Health Assistant Illustration">
+     
+      </div>
+     </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <h2>Our Core Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <i class="fas fa-user-md feature-icon"></i>
+          <h3>Find Doctors</h3>
+          <p>Search by specialty, location, and availability to connect with the right healthcare professional.</p>
+          <a href="find-doctors.html">
+          <button class="btn-secondary" onclick="showSection('find-doctors-container')">Explore <i class="fas fa-arrow-right"></i></button>
+          </a>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-microphone-alt feature-icon"></i>
+          <h3>Voice Mood Tracking</h3>
+          <p>Monitor your emotional well-being through voice analysis and receive personalized insights.</p>
+          <a href="voice-mood-tracker.html">
+          <button class="btn-secondary" onclick="showSection('mood-tracking')">Track Mood <i class="fas fa-arrow-right"></i></button>
+          </a>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-file-medical feature-icon"></i>
+          <h3>Health Reports</h3>
+          <p>Upload your medical records and get AI-powered summaries, insights, and recommendations.</p>
+          <a href="health-reports.html">
+          <button class="btn-secondary" onclick="showSection('health-reports')">Upload Reports <i class="fas fa-arrow-right"></i></button>
+          </a>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-hand-holding-heart feature-icon"></i>
+          <h3>Care Taker</h3>
+          <p>Connect with trusted care takers and manage their services for your loved ones.</p>
+          <a href="care-takers.html">
+          <button class="btn-secondary" onclick="showSection('care-taker')">Manage Care Takers <i class="fas fa-arrow-right"></i></button>
+          </a>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-language feature-icon"></i>
+          <h3>Bilingual Support</h3>
+          <p>Access and use the platform seamlessly in both English and Hindi for wider accessibility.</p>
+          <a href="bilingual-support.html">
+          <button class="btn-secondary" id="languageToggleBtn">Switch Language <i class="fas fa-arrow-right"></i></button>
+          </a>
+        </div>
+      
+        <!-- New Feature Card: Telemedicine Consultations -->
+        <div class="feature-card">
+          <i class="fas fa-video feature-icon"></i>
+          <h3>Telemedicine Consultations</h3>
+          <p>Connect with doctors remotely through secure video calls for convenient consultations.</p>
+          <a href="telemedicine-consultations.html">
+          <button class="btn-secondary" data-section="telemedicine">Start Consult <i class="fas fa-arrow-right"></i></button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholder for Find Doctors content -->
+    <div id="find-doctors-container" class="content-section hidden">
+      <!-- Content from find-doctors.html will be loaded here -->
+    </div>
+
+    <!-- Mood Tracking Section -->
+    <section id="mood-tracking" class="content-section hidden">
+      <h2>Voice Mood Tracking</h2>
+      <p>Record your voice to get an analysis of your emotional well-being.</p>
+      <div class="mood-tracker-controls">
+        <button class="btn-primary" id="startRecording"><i class="fas fa-microphone"></i> Start Recording</button>
+        <button class="btn-secondary" id="stopRecording" disabled><i class="fas fa-stop"></i> Stop Recording</button>
+        <audio id="audioPlayback" controls></audio>
+      </div>
+      <div class="mood-results">
+        <h4>Mood Analysis:</h4>
+        <p id="moodText">Record to analyze your mood...</p>
+        <div class="mood-chart-placeholder">
+          <!-- A canvas for a simple chart could go here -->
+          <p>Chart will appear here after analysis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Health Reports Section -->
+    <section id="health-reports" class="content-section hidden">
+      <h2>Health Reports & Summaries</h2>
+      <p>Upload your medical documents (PDF, JPG, PNG) to get an AI-powered summary and insights.</p>
+      <div class="upload-area">
+        <input type="file" id="reportUpload" accept=".pdf,.jpg,.jpeg,.png">
+        <label for="reportUpload" class="btn-primary"><i class="fas fa-cloud-upload-alt"></i> Upload Report</label>
+        <p id="fileName">No file chosen</p>
+        <button class="btn-secondary" id="summarizeReport" disabled><i class="fas fa-file-alt"></i> Summarize Report</button>
+      </div>
+      <div class="report-summary">
+        <h4>AI Summary:</h4>
+        <p id="summaryText">Upload a report to see its summary...</p>
+      </div>
+    </section>
+
+    <!-- Care Taker Section (Placeholder) -->
+    <section id="care-taker" class="content-section hidden">
+        <h2>Manage Care Takers</h2>
+        <p>This section will allow you to find, manage, and schedule services with trusted care takers.</p>
+        <div class="care-taker-features">
+            <p><i class="fas fa-search"></i> Search for care takers by specialty (e.g., elder care, child care).</p>
+            <p><i class="fas fa-calendar-alt"></i> View availability and book appointments.</p>
+            <p><i class="fas fa-comment-dots"></i> Communicate directly with care takers.</p>
+            <button class="btn-primary mt-4">Find New Care Taker</button>
+        </div>
+    </section>
+
+     <!-- New Content Section: Care Tracker Marketplace -->
+    <section id="care-tracker-marketplace" class="content-section hidden">
+      <h2>Care Tracker Marketplace</h2>
+      <p>Find a personal care tracker or offer your services.</p>
+      <div class="marketplace-options">
+        <div class="marketplace-card">
+          <h3>Find a Care Tracker</h3>
+          <p>Search for qualified personal care trackers in your area.</p>
+          <input type="text" placeholder="Location (e.g., City, Pincode)" id="careTrackerLocationSearch">
+          <button class="btn-primary mt-3" id="searchCareTrackers"><i class="fas fa-search"></i> Search Care Trackers</button>
+          <div class="care-tracker-results mt-4">
+            <p>No care trackers found yet. Try a different search.</p>
+          </div>
+        </div>
+        <div class="marketplace-card mt-4">
+          <h3>Become a Care Tracker</h3>
+          <p>Offer your services as a personal care tracker to those in need.</p>
+          <button class="btn-secondary" id="registerCareTracker"><i class="fas fa-user-plus"></i> Register as Care Tracker</button>
+          <div class="care-tracker-registration-info mt-4">
+            <p>Click to register and create your profile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Sections -->
+    <section id="appointments" class="content-section hidden">
+      <h2>My Appointments</h2>
+      <p>View your upcoming and past appointments.</p>
+      <div class="appointment-list">
+        <div class="appointment-card">
+          <h4>Dr. Ananya Sharma - General Physician</h4>
+          <p><i class="fas fa-calendar-alt"></i> Date: 2025-08-10</p>
+          <p><i class="fas fa-clock"></i> Time: 10:00 AM</p>
+          <p><i class="fas fa-map-marker-alt"></i> Location: City Hospital, Room 301</p>
+          <button class="btn-danger"><i class="fas fa-times-circle"></i> Cancel</button>
+        </div>
+        <div class="appointment-card">
+          <h4>Dr. Rohan Gupta - Dermatologist</h4>
+          <p><i class="fas fa-calendar-alt"></i> Date: 2025-07-28</p>
+          <p><i class="fas fa-clock"></i> Time: 03:30 PM</p>
+          <p><i class="fas fa-video"></i> Type: Video Consultation</p>
+          <button class="btn-primary"><i class="fas fa-video"></i> Join Call</button>
+        </div>
+      </div>
+      <button class="btn-primary mt-4" data-section="find-doctors">Book New Appointment</button>
+    </section>
+
+  
+   <!-- Appointments Section -->
+    <section id="appointments" class="content-section hidden">
+      <h2>My Appointments</h2>
+      <p>View your upcoming and past appointments.</p>
+      <div class="appointment-list">
+        <div class="appointment-card">
+          <h4>Dr. Ananya Sharma - General Physician</h4>
+          <p><i class="fas fa-calendar-alt"></i> Date: 2025-08-10</p>
+          <p><i class="fas fa-clock"></i> Time: 10:00 AM</p>
+          <p><i class="fas fa-map-marker-alt"></i> Location: City Hospital, Room 301</p>
+          <button class="btn-danger"><i class="fas fa-times-circle"></i> Cancel</button>
+        </div>
+        <div class="appointment-card">
+          <h4>Dr. Rohan Gupta - Dermatologist</h4>
+          <p><i class="fas fa-calendar-alt"></i> Date: 2025-07-28</p>
+          <p><i class="fas fa-clock"></i> Time: 03:30 PM</p>
+          <p><i class="fas fa-video"></i> Type: Video Consultation</p>
+          <button class="btn-primary"><i class="fas fa-video"></i> Join Call</button>
+        </div>
+      </div>
+      <button class="btn-primary mt-4" onclick="showSection('find-doctors-container')">Book New Appointment</button>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="content-section hidden">
+      <h2>My Profile</h2>
+      <p>Manage your personal information and health preferences.</p>
+      <form class="profile-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" value="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="john.doe@example.com" disabled>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" value="+91 9876543210">
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" value="1990-01-15">
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address">123 Health Street, Wellness City, 12345</textarea>
+        </div>
+        <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+      </form>
+    </section>
+
+    <!-- SOS Alert Modal -->
+    <div id="sosModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2><i class="fas fa-exclamation-circle text-danger"></i> Emergency Alert</h2>
+        <p>Are you sure you want to send an SOS alert?</p>
+        <p>This will notify your emergency contacts and potentially local emergency services.</p>
+        <div class="modal-actions">
+          <button class="btn-danger" id="confirmSos">Send SOS</button>
+          <button class="btn-secondary" id="cancelSos">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="MyHealth Fusion Logo">
+        <span>MyHealth <strong>Fusion</strong></span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="social-media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 MyHealth Fusion. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header" id="chatbotHeader">
+      <div class="chatbot-header-content">
+        <img src="https://placehold.co/30x30/3498db/ffffff?text=AI" alt="MyHealth Fusion Chatbot Icon" class="chatbot-icon">
+        <span>MyHealthAI</span>
+        <span class="status-dot online"></span>
+      </div>
+      <button class="chatbot-toggle-btn" id="chatbotToggleBtn"><i class="fas fa-minus"></i></button>
+    </div>
+    <div class="chatbot-body" id="chatbotBody">
+      <div class="chatbot-messages" id="chatbotMessages">
+        <!-- Chat messages will be appended here by JavaScript -->
+        <div class="message bot-message">
+          <p>Hello! I'm MyHealthAI, your virtual assistant. How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <textarea id="chatInput" placeholder="Type your message..." rows="1"></textarea>
+        <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- Link the new find-doctors.js -->
+  <script src="find-doctors.js"></script>
+</body>
+</html>

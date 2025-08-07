@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyHealth Fusion - Find Doctors</title>
+  <!-- Link to Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link to Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Link to the specific CSS for this page -->
+  <link rel="stylesheet" href="find-doctors.css">
+  <style>
+    /* Basic body styles for the standalone page */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f6;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    a {
+      text-decoration: none;
+      color: #2980b9;
+    }
+
+    a:hover {
+      color: #3498db;
+    }
+
+    /* General content section styling (copied from your main style.css for standalone functionality) */
+    .content-section {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 40px auto; /* Added margin for standalone page */
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .content-section h2 {
+      font-size: 2.2em;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .content-section p {
+      font-size: 1.1em;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    /* Animations (copied for standalone functionality) */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Basic button styles for standalone context */
+    .btn-primary {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background-color: #2980b9;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Simplified Header for Standalone Page -->
+  <header class="standalone-header">
+    <div class="logo">
+      <img src="logo.jpg" alt="MyHealth Fusion Logo" class="logo-icon">
+      <span>MyHealth <strong>Fusion</strong></span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-item">Back to Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- This section is the main content of the Find Doctors page -->
+  <section id="find-doctors" class="content-section">
+    <h2>Find Your Perfect Doctor</h2>
+    <p>Search for specialists by your symptoms, desired expertise, or location to connect with the right healthcare professional.</p>
+    <div class="doctor-search-form">
+      <div class="form-group">
+        <label for="symptomsInput"><i class="fas fa-stethoscope"></i> Your Symptoms / Specialty</label>
+        <input type="text" id="symptomsInput" placeholder="e.g., fever, headache, cardiology, dermatologist">
+      </div>
+      <div class="form-group">
+        <label for="locationInput"><i class="fas fa-map-marker-alt"></i> Your Location</label>
+        <input type="text" id="locationInput" placeholder="e.g., New Delhi, Mumbai, 110001">
+      </div>
+      <button class="btn-primary" id="searchDoctorsBtn"><i class="fas fa-search"></i> Search Doctors</button>
+    </div>
+
+    <div id="doctorResultsContainer">
+      <!-- Doctor cards will be dynamically loaded here -->
+      <p class="no-results-message" id="initialSearchMessage">Start your search above to find highly-rated doctors near you.</p>
+      <div class="loading-spinner" id="doctorLoadingSpinner"></div>
+      <div class="doctor-results-grid" id="doctorResultsGrid">
+        <!-- Doctor cards will be appended here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Simplified Footer for Standalone Page -->
+  <footer class="standalone-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://placehold.co/30x30/3498db/ffffff?text=MH" alt="MyHealth Fusion Logo">
+        <span>MyHealth <strong>Fusion</strong></span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 MyHealth Fusion. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Link to the specific JavaScript for this page -->
+  <script src="find-doctors.js"></script>
+</body>
+</html>

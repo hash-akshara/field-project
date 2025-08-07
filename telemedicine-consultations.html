@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telemedicine Consultations</title>
+  <!-- Link to the specific CSS for this page -->
+  <link rel="stylesheet" href="telemedicine-consultations.css">
+  <!-- Link to the Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link to Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <section id="telemedicine-consultations-content" class="content-section">
+    <div class="section-header">
+      <i class="fas fa-video section-icon"></i>
+      <h2>Telemedicine Consultations</h2>
+      <p>Connect with healthcare professionals online for convenient and secure consultations from anywhere.</p>
+    </div>
+    <div class="telemedicine-main-content">
+      <div class="card schedule-consultation-card">
+        <h3>Schedule a New Consultation</h3>
+        <form id="scheduleConsultationForm">
+          <div class="form-group">
+            <label for="doctorSelect">Select Doctor</label>
+            <select id="doctorSelect" required>
+              <option value="">-- Choose a Doctor --</option>
+              <option value="Dr. Anya Sharma - General Physician">Dr. Anya Sharma - General Physician</option>
+              <option value="Dr. Rohan Mehta - Dermatologist">Dr. Rohan Mehta - Dermatologist</option>
+              <option value="Dr. Priya Singh - Pediatrician">Dr. Priya Singh - Pediatrician</option>
+              <option value="Dr. Vikram Rao - Cardiologist">Dr. Vikram Rao - Cardiologist</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="consultationDate">Date</label>
+            <input type="date" id="consultationDate" required>
+          </div>
+          <div class="form-group">
+            <label for="consultationTime">Time</label>
+            <input type="time" id="consultationTime" required>
+          </div>
+          <div class="form-group">
+            <label for="consultationReason">Reason for Consultation</label>
+            <textarea id="consultationReason" rows="3" placeholder="Briefly describe your symptoms or reason..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary"><i class="fas fa-calendar-plus"></i> Schedule Consultation</button>
+        </form>
+      </div>
+
+      <div class="card upcoming-consultations-card">
+        <h3>Upcoming Consultations</h3>
+        <div class="loading-spinner hidden" id="consultationLoadingSpinner"></div>
+        <div id="upcomingConsultationsList" class="consultation-list">
+          <p class="no-consultations-message">No upcoming consultations. Schedule one above!</p>
+          <!-- Upcoming consultations will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Link to the specific JavaScript for this page -->
+  <script src="telemedicine-consultations.js"></script>
+</body>
+</html>

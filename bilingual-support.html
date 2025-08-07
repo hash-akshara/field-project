@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilingual Support</title>
+  <!-- Link to the specific CSS for this page -->
+  <link rel="stylesheet" href="bilingual-support.css">
+  <!-- Link to the Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link to Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <section id="bilingual-support-content" class="content-section">
+    <div class="section-header">
+      <i class="fas fa-language section-icon"></i>
+      <h2>Bilingual Support</h2>
+      <p>Switch between English and Hindi to access the platform seamlessly.</p>
+    </div>
+    <div class="bilingual-support-main-content">
+      <div class="card language-switcher-card">
+        <h3>Choose Your Language</h3>
+        <p>Select your preferred language for the application interface.</p>
+        <div class="language-options">
+          <button class="btn-primary" id="englishLangBtn" data-lang="en">
+            <i class="fas fa-globe"></i> English
+          </button>
+          <button class="btn-secondary" id="hindiLangBtn" data-lang="hi">
+            <i class="fas fa-globe"></i> हिन्दी (Hindi)
+          </button>
+        </div>
+        <p class="current-language-display">Current Language: <strong id="currentLanguage">English</strong></p>
+      </div>
+
+      <div class="card translation-example-card">
+        <h3>Translation Example</h3>
+        <p>See how content changes based on your language selection.</p>
+        <div class="example-text">
+          <p id="exampleTitle" class="text-title">Welcome to MyHealth Fusion!</p>
+          <p id="exampleDescription" class="text-description">Your AI Health Assistant for a healthier life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Link to the specific JavaScript for this page -->
+  <script src="bilingual-support.js"></script>
+</body>
+</html>

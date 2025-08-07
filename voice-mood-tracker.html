@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Mood Tracker</title>
+  <!-- Link to the specific CSS for this page -->
+  <link rel="stylesheet" href="voice-mood-tracker.css">
+  <!-- Link to the Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link to Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js library for the mood chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <section id="mood-tracking-content" class="content-section">
+    <div class="section-header">
+      <i class="fas fa-microphone-alt section-icon"></i>
+      <h2>Voice Mood Tracking</h2>
+      <p>Record your voice to get an AI-powered analysis of your emotional well-being. Understand your mood patterns over time.</p>
+    </div>
+    <div class="mood-tracking-main-content">
+      <div class="card">
+        <h3>Record Your Voice</h3>
+        <p>Click the button below to start recording. Speak naturally for at least 30 seconds for best results.</p>
+        <div class="recording-controls">
+          <button id="startRecording" class="btn-primary"><i class="fas fa-play"></i> Start Recording</button>
+          <button id="stopRecording" class="btn-danger" disabled><i class="fas fa-stop"></i> Stop Recording</button>
+        </div>
+        <div class="recording-status">
+          <span id="recordingStatus">Ready to record...</span>
+          <div id="recordingWave" class="wave-animation hidden">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <audio id="audioPlayback" controls class="hidden"></audio>
+      </div>
+
+      <div class="card mood-results hidden" id="moodResultsCard">
+        <h3>Mood Analysis Result</h3>
+        <div class="loading-spinner hidden" id="moodLoadingSpinner"></div>
+        <p id="moodText" class="mood-message">Your mood analysis will appear here.</p>
+        <div class="mood-chart-container">
+          <canvas id="moodChart"></canvas>
+        </div>
+        <button class="btn-secondary" onclick="resetMoodTracking()"><i class="fas fa-redo"></i> Analyze New Voice</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Link to the specific JavaScript for this page -->
+  <script src="voice-mood-tracker.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Reports</title>
+  <!-- Link to the specific CSS for this page -->
+  <link rel="stylesheet" href="health-reports.css">
+  <!-- Link to the Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link to Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <section id="health-reports-content" class="content-section">
+    <div class="section-header">
+      <i class="fas fa-file-medical section-icon"></i>
+      <h2>Health Reports</h2>
+      <p>Upload your medical reports (PDF, images) and get AI-powered summaries, key insights, and personalized recommendations.</p>
+    </div>
+    <div class="health-reports-main-content">
+      <div class="card file-upload-card">
+        <h3>Upload Your Report</h3>
+        <p>Supported formats: PDF, JPG, PNG. Max file size: 10MB.</p>
+        <div class="file-input-wrapper">
+          <input type="file" id="reportUpload" accept=".pdf,.jpg,.jpeg,.png" class="hidden-input">
+          <label for="reportUpload" class="custom-file-upload btn-primary">
+            <i class="fas fa-upload"></i> Choose File
+          </label>
+          <span id="fileName" class="file-name">No file chosen</span>
+        </div>
+        <button id="summarizeReport" class="btn-secondary" disabled><i class="fas fa-robot"></i> Summarize Report</button>
+      </div>
+
+      <div class="card report-summary-card hidden" id="reportSummaryCard">
+        <h3>AI Report Summary</h3>
+        <div class="loading-spinner hidden" id="reportLoadingSpinner"></div>
+        <div class="summary-output">
+          <p id="summaryText">Upload a report to see its summary...</p>
+        </div>
+        <button class="btn-secondary" onclick="resetReportUpload()"><i class="fas fa-redo"></i> Upload Another Report</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Link to the specific JavaScript for this page -->
+  <script src="health-reports.js"></script>
+</body>
+</html>
