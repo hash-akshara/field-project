@@ -37,14 +37,31 @@ document.addEventListener('DOMContentLoaded', () => {
       reportSummaryCard.classList.remove('hidden');
       reportLoadingSpinner.classList.remove('hidden');
       summaryText.textContent = 'Processing your report with AI...';
-      console.log('Simulating report summarization for:', reportUpload.files[0].name);
 
-      // Simulate AI analysis time
-      setTimeout(() => {
-        reportLoadingSpinner.classList.add('hidden');
-        const dummySummary = `**AI Summary for ${fileNameSpan.textContent}:**\n\nThis report indicates a general good health status with minor observations. Key findings include stable vital signs and normal lab results. Recommendations include maintaining current lifestyle, regular exercise, and a balanced diet. A follow-up consultation in 6 months is advised to monitor progress. No critical issues identified.`;
-        summaryText.textContent = dummySummary;
-      }, 3000); // Simulate AI analysis time
+      const formData = new FormData();
+      formData.append('report', reportUpload.files[0], reportUpload.files[0].name);
+
+      fetch('http://127.0.0.1:5002/api/summarize-report', {
+        method: 'POST',
+        body: formData,
+      })
+        .then(async (res) => {
+          const data = await res.json().catch(() => ({}));
+          reportLoadingSpinner.classList.add('hidden');
+
+          if (!res.ok) {
+            summaryText.textContent = data.error || 'Summarization failed.';
+            return;
+          }
+
+          const summary = data.summary || 'No summary returned.';
+          summaryText.textContent = summary;
+        })
+        .catch((err) => {
+          console.error('Report summarization request failed:', err);
+          reportLoadingSpinner.classList.add('hidden');
+          summaryText.textContent = 'Error: Could not summarize report. Please try again.';
+        });
     });
   }
 });

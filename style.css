@@ -53,7 +53,7 @@ header {
 }
 
 .logo strong {
-  color: #3498db; /* A vibrant blue for "Fusion" */
+  color: #3498db; /* A vibrant blue accent */
 }
 
 header nav a {
@@ -472,6 +472,7 @@ header nav a.active::after {
 .profile-form .form-group {
   display: flex;
   flex-direction: column;
+
 }
 
 .profile-form label {
@@ -516,11 +517,12 @@ header nav a.active::after {
   z-index: 2000; /* Sit on top */
   left: 0;
   top: 0;
+
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-  display: flex;
+  /* display: flex;         */
   align-items: center;
   justify-content: center;
 }

@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const translations = {
     en: {
       currentLanguage: "English",
-      welcomeTitle: "Welcome to MyHealth Fusion!",
+      welcomeTitle: "Welcome!",
       welcomeDescription: "Your AI Health Assistant for a healthier life."
     },
     hi: {
       currentLanguage: "हिन्दी",
-      welcomeTitle: "माईहेल्थ फ्यूजन में आपका स्वागत है!",
+      welcomeTitle: "स्वागत है!",
       welcomeDescription: "स्वस्थ जीवन के लिए आपका एआई स्वास्थ्य सहायक।"
     }
   };

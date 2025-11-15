@@ -55,24 +55,38 @@ document.addEventListener('DOMContentLoaded', () => {
           moodLoadingSpinner.classList.remove('hidden');
           moodText.textContent = 'Processing your voice for mood analysis...';
 
-          // Simulate AI analysis delay
-          setTimeout(() => {
-            moodLoadingSpinner.classList.add('hidden');
-            const moods = ['Happy', 'Calm', 'Neutral', 'Anxious', 'Sad'];
-            const randomMood = moods[Math.floor(Math.random() * moods.length)];
-            moodText.innerHTML = `Your voice indicates a **${randomMood}** mood.`; // Use innerHTML for bolding
+          try {
+            const formData = new FormData();
+            formData.append('audio', audioBlob, 'recording.wav');
 
-            // Generate dummy data for the chart
+            const response = await fetch('http://127.0.0.1:5002/api/analyze-mood', {
+              method: 'POST',
+              body: formData,
+            });
+
+            const data = await response.json();
+
+            moodLoadingSpinner.classList.add('hidden');
+
+            if (!response.ok) {
+              moodText.textContent = data.error || 'Mood analysis failed.';
+              return;
+            }
+
+            const mood = data.mood || 'Neutral';
+            moodText.innerHTML = `Your voice indicates a **${mood}** mood.`; // Use innerHTML for bolding
+
+            const breakdown = data.moodBreakdown || {};
             const moodData = {
               labels: ['Happy', 'Calm', 'Neutral', 'Anxious', 'Sad'],
               datasets: [{
                 label: 'Mood Distribution',
                 data: [
-                  Math.floor(Math.random() * 30) + 10, // Happy
-                  Math.floor(Math.random() * 30) + 10, // Calm
-                  Math.floor(Math.random() * 30) + 10, // Neutral
-                  Math.floor(Math.random() * 20) + 5,  // Anxious
-                  Math.floor(Math.random() * 20) + 5   // Sad
+                  Math.round((breakdown.happy || 0) * 100),
+                  Math.round((breakdown.calm || 0) * 100),
+                  Math.round((breakdown.neutral || 0) * 100),
+                  Math.round((breakdown.anxious || 0) * 100),
+                  Math.round((breakdown.sad || 0) * 100)
                 ],
                 backgroundColor: [
                   'rgba(75, 192, 192, 0.6)', // Happy
@@ -92,12 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
               }]
             };
 
-            // Destroy previous chart instance if it exists
             if (moodChartInstance) {
               moodChartInstance.destroy();
             }
 
-            // Render new chart
             moodChartInstance = new Chart(moodChartCanvas, {
               type: 'pie', // Using pie chart for mood distribution
               data: moodData,
@@ -114,8 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
               },
             });
-
-          }, 3000); // Simulate AI analysis time
+          } catch (err) {
+            console.error('Mood analysis request failed:', err);
+            moodLoadingSpinner.classList.add('hidden');
+            moodText.textContent = 'Error: Could not analyze mood. Please try again.';
+          }
         };
 
         mediaRecorder.start();
